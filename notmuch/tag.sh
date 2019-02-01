@@ -3,7 +3,7 @@
 # Based on: https://anarc.at/blog/2016-05-12-email-setup/
 # symlink into ~/Maildir/.notmuch/hooks/post-new
 
-FOLDER_EXCL="Maildir/(lists.*|drafts.*|Archive.*|greyspam.*|sent.*|Sent.*|spam.*|Junk.*|trash.*|Deleted.*|INBOX/)\$"
+FOLDER_EXCL="Maildir/(lists.*|drafts.*|Archive.*|archive.*|greyspam.*|sent.*|Sent.*|spam.*|Junk.*|trash.*|Deleted.*|INBOX/)\$"
 
 function foldertag {
   echo $1 | sed 's#/$##;s#^.*/##'
@@ -32,11 +32,14 @@ notmuch tag -unread tag:sent #and not to:bnotes@mube.co.uk
 # Bots
 #notmuch tag +bot tag:inbox and from:stcolfs@servers.ekernow.com
 
-# ---
-#GGMR
+# ----
 
-# Remove inbox from Archive emails
-notmuch tag -inbox folder:Archive
+# GGMR
+
+#Basic tagging for Office365 (with name-translations)
+notmuch tag -inbox -archive folder:archive
+notmuch tag +sent folder:sent
+
 
 # Add sent tag to GGMR Office365 emails
 # https://notmuchmail.org/pipermail/notmuch/2011/003707.html
