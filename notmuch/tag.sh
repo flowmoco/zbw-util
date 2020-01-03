@@ -48,3 +48,7 @@ notmuch tag +sent folder:sent
 #	for dir in *; do notmuch tag +"$dir"; folder:"$dir"; done
 #notmuch tag +sent folder:"Sent Items" # NEEDS WORK
 # notmuch search folder:Archive
+
+
+# If clearing down inbox at start of new year, use the following command to add a per-year inbox tag
+# notmuch tag +inbox-end-2019 -inbox tag:inbox
