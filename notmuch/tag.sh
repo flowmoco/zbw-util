@@ -13,14 +13,14 @@ echo tagging folders
 
 # Tag all new messages with respective folder but leave in inbox
 for folder in $(ls -ad $HOME/Maildir/*/ | egrep -v "$FOLDER_EXCL"); do
-    tag=$(foldertag $folder)
-    notmuch tag +$tag tag:inbox and not tag:$tag and folder:${PREFIX}$tag
+  tag=$(foldertag $folder)
+  notmuch tag +$tag tag:inbox and not tag:$tag and folder:${PREFIX}$tag
 done
 
 # Remove inbox tag for folders to check manually (e.g. spam, etc) and tag with respective folder
 for folder in $(ls -ad $HOME/Maildir/*/ | egrep "$FOLDER_EXCL" | egrep -v "Maildir/INBOX/"); do
-    tag=$(foldertag $folder)
-    notmuch tag +$tag -inbox tag:inbox and not tag:$tag and folder:${PREFIX}$tag
+  tag=$(foldertag $folder)
+  notmuch tag +$tag -inbox tag:inbox and not tag:$tag and folder:${PREFIX}$tag
 done
 
 # Remove unread from sent items
